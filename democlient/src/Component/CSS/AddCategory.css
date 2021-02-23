@@ -1,0 +1,57 @@
+  .box{
+    margin-top: 1rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    box-shadow:  0 0.3rem 0.7rem var(--primaryColor);
+    margin-bottom: 1rem;
+  }
+  
+  .box .input-form
+  {
+   border:1px solid var(--primaryColor);
+   width: 100%;
+   border-radius: 5px;
+   height: 2.5rem;
+   
+  }
+  
+  .box .category-btn{
+    background-color: var(--primaryColor);
+    border-color: var(--primaryColor);
+    width: 100%;
+    text-transform: uppercase;
+    color: white; 
+  }
+
+  .box .category-btn:hover{
+    background-color: var(--secondaryColor);
+    border-color: var(--secondaryColor);
+    width: 100%;
+    text-transform: uppercase;
+    color: white; 
+  }
+  
+  .box .foot a{
+    margin: 1rem;
+    padding-top: 1rem;
+  }  
+  
+  .box .foot
+  {
+    height: 2rem;
+    text-align: center;
+  }
+  
+  .box a:hover{
+    text-decoration: underline;
+  }
+
+  .buttonErrorMessage {
+    margin-top: 0.5rem;
+  }
+
+
+  
+
+
+  

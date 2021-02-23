@@ -1,0 +1,89 @@
+.addProductBox{
+  margin-top: 1rem;
+  padding-left: 2rem;
+  box-sizing: border-box;
+  box-shadow:  0 0.3rem 0.7rem var(--primaryColor);
+  margin-bottom: 1rem;
+}
+
+.addProductBox .addProductForm{
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.addProductFormLabelWithRequiredFiled{
+  width: 25%;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.addProductAndErr{
+  width: 75%;
+  text-align: left;
+}
+
+.AddProductForm {
+ border:1px solid var(--primaryColor);
+ text-align: Left;
+ width: 100%;
+ border-radius: 5px;
+ height: 2.2rem;
+ align-items: center;
+}
+
+.addProductRequiredMarkStar{
+  color : var(--errorColor);
+  font-size: 1.2rem;
+  margin-left: 0.2rem;
+}
+
+.addProductErr{
+  color : var(--errorColor);
+  font-size: 0.9rem;
+  width: 100%;
+  text-align: left;
+}
+
+.viewAndEditIcon {
+  font-size: 1.1rem;
+  color: #0000EE;
+  cursor: pointer;
+}
+
+.viewAndEditIcon :hover {
+  font-size: 1rem;
+  color: var(--secondaryColor);
+  cursor: pointer;
+}
+
+.selectedRadioBtn {
+  -webkit-appearance:none;
+  width: 0.7rem;
+  height: 0.7rem  ;
+  border:1px solid;
+  border-radius:50%;
+  outline: none;
+  background-color: white;
+  background-color: #e7e6e7;
+}
+
+#indicatingSelectedRow:hover {
+  box-shadow:0 0 5px 0px var(--secondaryColor) inset;
+}
+
+#indicatingSelectedRow:checked {
+  background: var(--secondaryColor);
+}
+
+@media(max-width: 550px) {
+
+  .addProductFormLabelWithRequiredFiled{
+    width: 100%;
+    margin-bottom: 0px;
+  }
+
+  .addProductAndErr{
+    width: 100%;
+  }
+}

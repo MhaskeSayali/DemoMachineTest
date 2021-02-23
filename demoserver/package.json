@@ -1,0 +1,26 @@
+{
+  "name": "appserver",
+  "version": "1.0.0",
+  "description": "The Server Application for Demo App",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "keypress": "^0.2.1",
+    "mysql": "^2.17.1",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "backend": "nodemon server.js",
+    "frontend": "npm run start --prefix ../appclient",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "clean": "concurrently \"rm -rf ./node_modules\" \"rm -rf ../appclient/node_modules\"",
+    "getclientnodemodules": "npm install --prefix ../appclient",
+    "getservernodemodules": "npm install",
+    "getnodemodules": "concurrently \"npm run getservernodemodules\" \"npm run getclientnodemodules\""
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,49 @@
+.App {
+  text-align: center;
+}
+
+:root {
+  --primaryColor: #a8cca8;
+  --secondaryColor: orange;
+  --errorColor: red;
+}
+
+.ProductTableHeader {
+  font-size: 1rem;
+  font-weight: 800;
+  color: grey;
+}
+
+.ProductTableHeading{
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: orange;
+}
+
+.productScreenBut {
+  color: white;
+  background-color: var(--primaryColor);
+  margin-left: 2rem;
+  font-size: 1rem; 
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.productScreenBut:hover {
+  background-color: var(--secondaryColor);
+  border: 1px solid var(--secondaryColor);
+}
+
+@media (max-width: 550px) {
+  .productScreenBut {
+    color: white;
+    background-color: var(--primaryColor);
+    margin-left: 2rem;
+    font-size: 1rem; 
+    border-radius: 5px;
+    margin-top: 1rem;
+    margin-left: 20%;
+  }
+}    
