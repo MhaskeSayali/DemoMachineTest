@@ -17,5 +17,9 @@ exports.wGetProductDetails = function(req,res){
     clientDBOp.dbGetProductDetails(req,res);
 };
 
+exports.wGetCategoryInformation = function(req,res){
+    clientDBOp.dbGetCategoryInformation(req,res);
+};
+
 
 

@@ -6,6 +6,7 @@ wroutes.post('/wclient/saveCategoryInformation', wfrontcontroller.wSaveCategoryI
 wroutes.post('/wclient/insertOrUpdateProductInfo', wfrontcontroller.wInsertOrUpdateProductInfo);
 wroutes.post('/wclient/getAllCategoriesInformation', wfrontcontroller.wGetAllCategoriesInformation);
 wroutes.post('/wclient/getProductDetails', wfrontcontroller.wGetProductDetails);
+wroutes.post('/wclient/getCategoryInformation', wfrontcontroller.wGetCategoryInformation);
 
 
 module.exports = wroutes;

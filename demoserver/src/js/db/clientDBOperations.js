@@ -13,22 +13,42 @@ module.exports = {
 
         if( reqBody == null || 
             ("categoryName" in reqBody) == false || 
-            reqBody.categoryName == null || reqBody.categoryName.length <= 0
-
+            reqBody.categoryName == null || reqBody.categoryName.length <= 0 ||
+            ("FormViewMode" in reqBody) == false || 
+            reqBody.FormViewMode == null || reqBody.FormViewMode.length <= 0
         ) {
-            strMsg = `Request JSON missing or does not contain categoryName.`;  
+            strMsg = `Request JSON missing or does not contain categoryName/FormViewMode.`;  
             res.send({code: 'REQ_PARAMS_MISSING', failuremessage: strMsg});
             console.error(STR_TAG_MODULE_OR_CLASS, STR_TAG_FUNC, strMsg);
             return; // No further processing required
         }
         
         let CategoryType = reqBody["categoryName"];
+        let FormViewMode = reqBody["FormViewMode"];
         let categoryDiscription = (reqBody["categoryDiscription"] == null || reqBody["categoryDiscription"].length <= 0) 
                                     ? null 
                                     : "'" +reqBody["categoryDiscription"] +"'";
+        let CategoryID = (reqBody["CategoryID"] == null || reqBody["CategoryID"].length <= 0) ? null : reqBody["CategoryID"];
 
-        const sqlQuery = `insert into Categories (CategoryID, CategoryType, Discription, LastModifiedTime)
-                            values(UUID_SHORT(), '${CategoryType}', ${categoryDiscription}, DATE_FORMAT(UTC_TIMESTAMP(), '%Y-%m-%d %H:%i:%S'))`;
+        let sqlQuery;
+
+        if(FormViewMode != null && FormViewMode.length > 0 && FormViewMode == "deleteMode") {
+
+            sqlQuery = `delete from Categories where CategoryID = '${CategoryID}'`;
+
+        } else if(FormViewMode != null && FormViewMode.length > 0 && FormViewMode == "editMode") {
+
+            sqlQuery = `update Categories 
+                        set CategoryType = '${CategoryType}',
+                        Discription = ${categoryDiscription},
+                        LastModifiedTime = DATE_FORMAT(UTC_TIMESTAMP(), '%Y-%m-%d %H:%i:%S')
+                        where CategoryID = '${CategoryID}'`;
+        } else {
+
+            sqlQuery = `insert into Categories (CategoryID, CategoryType, Discription, LastModifiedTime)
+                                values(UUID_SHORT(), '${CategoryType}', ${categoryDiscription}, DATE_FORMAT(UTC_TIMESTAMP(), '%Y-%m-%d %H:%i:%S'))`;
+        }
+
 
         pool.query(sqlQuery, function(err, result) {
             if(err) {
@@ -179,6 +199,29 @@ module.exports = {
             } else {
                 let strMsg = `Success while getting product information.`;
                 res.send({code: 'SUCCESS', successmessage: strMsg, retrivedProductDetails: result});
+                console.log(STR_TAG_MODULE_OR_CLASS, STR_TAG_FUNC, strMsg);
+                return; // No further processing required
+            }
+        })
+    },
+
+    dbGetCategoryInformation: function(req, res) {
+
+        const STR_TAG_FUNC = "dbGetCategoryInformation";
+
+        let strMsg = '';
+
+        let sqlQuery = `select * from Categories`;
+        
+        pool.query(sqlQuery, function(err, result) {
+            if(err) {
+                strMsg = `SQL Error while getting Categories information.`;
+                res.send({code: 'SQL_ERROR', failuremessage: strMsg, sqlerrcode: err.code, errno: err.errno});
+                console.error(STR_TAG_MODULE_OR_CLASS, STR_TAG_FUNC, strMsg, err);
+                return; // No further processing required
+            } else {
+                let strMsg = `Success while getting Categories information.`;
+                res.send({code: 'SUCCESS', successmessage: strMsg, retrivedCategoriesDetails: result});
                 console.log(STR_TAG_MODULE_OR_CLASS, STR_TAG_FUNC, strMsg);
                 return; // No further processing required
             }
